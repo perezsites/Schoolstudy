@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>PerezStudyroom • PDF & Announcements</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+    body {
+      background: #f5f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .app-container {
+      max-width: 500px;
+      width: 100%;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      padding: 24px 20px;
+      transition: all 0.2s ease;
+    }
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto 16px;
+      border: 3px solid #e0e7ff;
+      background: #d9e2f0;
+    }
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #0b1e33;
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eef2f6;
+      padding-bottom: 18px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1f2937;
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+      background: #f9fafc;
+      transition: 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #2563eb;
+      background: white;
+    }
+    button {
+      background: #0f172a;
+      color: white;
+      border: none;
+      font-weight: 600;
+      padding: 14px;
+      width: 100%;
+      border-radius: 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+    button.secondary {
+      background: white;
+      color: #1e293b;
+      border: 1.5px solid #cbd5e1;
+      margin-top: 6px;
+    }
+    button.danger {
+      background: #b91c1c;
+      color: white;
+    }
+    .flex-row {
+      display: flex;
+      gap: 10px;
+    }
+    .otp-section {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 14px;
+      margin: 12px 0;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .announcement-card, .pdf-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #e9eef3;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .role-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .whatsapp-link {
+      color: #075e54;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    hr {
+      margin: 18px 0;
+      border: 0.5px solid #e2e8f0;
+    }
+    .small-text {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .btn-small {
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      width: auto;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+<div class="app-container" id="appContainer">
+  <!-- dynamic content will be rendered here -->
+</div>
+
+<script>
+  (function() {
+    // ---------- STORAGE & STATE ----------
+    const STORAGE_KEYS = {
+      CURRENT_USER: 'perez_current_user',
+      USERS: 'perez_users',
+      TOP_CONTRIBUTORS: 'perez_top_contributors',
+      PDFS: 'perez_pdfs',
+      ANNOUNCEMENTS: 'perez_announcements',
+      BANNED: 'perez_banned'
+    };
+
+    // Default main contributor password & top contributor password
+    const MAIN_PASSWORD = '$set2024$';
+    const TOP_PASSWORD = '22332024';
+
+    // Initialize data if not present
+    if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
+      localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify([]));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.TOP_CONTRIBUTORS)) {
+      // store top contributors as array of names (or objects)
+      localStorage.setItem(STORAGE_KEYS.TOP_CONTRIBUTORS, JSON.stringify([]));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.PDFS)) {
+      localStorage.setItem(STORAGE_KEYS.PDFS, JSON.stringify([]));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS)) {
+      localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENTS, JSON.stringify([]));
+    }
+    if (!localStorage.getItem(STORAGE_KEYS.BANNED)) {
+      localStorage.setItem(STORAGE_KEYS.BANNED, JSON.stringify([]));
+    }
+
+    // Helper functions
+    function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || []; }
+    function saveUsers(users) { localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users)); }
+    function getTopContributors() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.TOP_CONTRIBUTORS)) || []; }
+    function saveTopContributors(list) { localStorage.setItem(STORAGE_KEYS.TOP_CONTRIBUTORS, JSON.stringify(list)); }
+    function getPdfs() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.PDFS)) || []; }
+    function savePdfs(pdfs) { localStorage.setItem(STORAGE_KEYS.PDFS, JSON.stringify(pdfs)); }
+    function getAnnouncements() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS)) || []; }
+    function saveAnnouncements(arr) { localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENTS, JSON.stringify(arr)); }
+    function getBanned() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.BANNED)) || []; }
+    function saveBanned(banned) { localStorage.setItem(STORAGE_KEYS.BANNED, JSON.stringify(banned)); }
+
+    function getCurrentUser() {
+      const data = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+      return data ? JSON.parse(data) : null;
+    }
+    function setCurrentUser(user) {
+      localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
+    }
+    function clearCurrentUser() {
+      localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+    }
+
+    // Check if user is banned
+    function isUserBanned(identifier) {
+      const banned = getBanned();
+      return banned.some(b => b.identifier === identifier);
+    }
+
+    // Render function
+    const app = document.getElementById('appContainer');
+
+    function renderSignupSignin() {
+      const current = getCurrentUser();
+      if (current) {
+        renderDashboard(current);
+        return;
+      }
+
+      app.innerHTML = `
+        <img src="p.jpg" alt="Profile" class="profile-pic" onerror="this.style.background='#cbd5e1'; this.style.border='2px solid #94a3b8';">
+        <h1>PerezStudyroom</h1>
+        <div class="subtitle">📚 School PDFs & Announcements</div>
+        
+        <div id="authMode">
+          <div class="flex-row">
+            <button id="showSignupBtn" class="secondary" style="flex:1">📝 Sign Up</button>
+            <button id="showSigninBtn" style="flex:1; background:#2563eb;">🔐 Sign In</button>
+          </div>
+          <div id="signupForm" class="hidden" style="margin-top:16px;">
+            <div class="form-group"><input type="text" id="signupName" placeholder="Full Name" required></div>
+            <div class="form-group"><input type="text" id="signupDept" placeholder="Department" required></div>
+            <div class="form-group"><input type="text" id="signupLevel" placeholder="Level (e.g., 200L)" required></div>
+            <div class="form-group"><input type="text" id="signupWhatsapp" placeholder="WhatsApp number e.g 090..." required></div>
+            <div class="otp-section hidden" id="otpBlock">
+              <label>Enter OTP sent to WhatsApp</label>
+              <input type="text" id="otpInput" placeholder="OTP code">
+              <button id="verifyOtpBtn" class="secondary" style="margin-top:8px;">✅ Verify OTP</button>
+            </div>
+            <button id="requestOtpBtn">📲 Send OTP to WhatsApp</button>
+            <p class="small-text" style="margin-top:6px;">Demo: OTP is <strong>1234</strong></p>
+          </div>
+          <div id="signinForm" class="hidden" style="margin-top:16px;">
+            <div class="form-group"><input type="text" id="signinName" placeholder="Registered Name"></div>
+            <div class="form-group"><input type="text" id="signinWhatsapp" placeholder="WhatsApp number"></div>
+            <button id="signinSubmitBtn">🔓 Sign In</button>
+          </div>
+        </div>
+        <hr>
+        <div style="margin-top:10px;">
+          <button id="topContributorLoginBtn" class="secondary">⭐ Top Contributors Login</button>
+          <button id="mainContributorLoginBtn" class="secondary" style="margin-top:8px;">🛡️ Main Contributor</button>
+        </div>
+        <div id="contributorLoginPanel" class="hidden" style="margin-top:12px; background:#f1f5f9; padding:14px; border-radius:16px;">
+          <div class="form-group"><input type="text" id="contribName" placeholder="Your Name (any)"></div>
+          <div class="form-group"><input type="password" id="contribPassword" placeholder="Password"></div>
+          <button id="contribLoginSubmit">🔑 Enter</button>
+        </div>
+        <p style="text-align:center; margin-top:16px;">
+          <a class="whatsapp-link" href="https://wa.me/2349012105476?text=Hello%20I%20have%20PDF%2Fannouncement%20for%20PerezStudyroom" target="_blank">
+            💬 Message 09012105476 on WhatsApp
+          </a>
+        </p>
+      `;
+
+      // Event listeners for signup/signin/contributor
+      document.getElementById('showSignupBtn').addEventListener('click', ()=>{
+        document.getElementById('signupForm').classList.remove('hidden');
+        document.getElementById('signinForm').classList.add('hidden');
+      });
+      document.getElementById('showSigninBtn').addEventListener('click', ()=>{
+        document.getElementById('signinForm').classList.remove('hidden');
+        document.getElementById('signupForm').classList.add('hidden');
+      });
+
+      let otpSent = false;
+      document.getElementById('requestOtpBtn').addEventListener('click', ()=>{
+        const wa = document.getElementById('signupWhatsapp').value.trim();
+        if(!wa) { alert('Enter WhatsApp number'); return; }
+        document.getElementById('otpBlock').classList.remove('hidden');
+        alert('OTP sent to WhatsApp (Demo: 1234)');
+        otpSent = true;
+      });
+
+      document.getElementById('verifyOtpBtn').addEventListener('click', ()=>{
+        const otp = document.getElementById('otpInput').value.trim();
+        if(otp !== '1234') { alert('Invalid OTP'); return; }
+        const name = document.getElementById('signupName').value.trim();
+        const dept = document.getElementById('signupDept').value.trim();
+        const level = document.getElementById('signupLevel').value.trim();
+        const whatsapp = document.getElementById('signupWhatsapp').value.trim();
+        if(!name||!dept||!level||!whatsapp) { alert('Fill all fields'); return; }
+        const users = getUsers();
+        if(users.find(u=> u.whatsapp === whatsapp)) { alert('WhatsApp already registered'); return; }
+        const newUser = { name, department: dept, level, whatsapp, role:'user' };
+        users.push(newUser);
+        saveUsers(users);
+        setCurrentUser(newUser);
+        renderDashboard(newUser);
+      });
+
+      document.getElementById('signinSubmitBtn').addEventListener('click', ()=>{
+        const name = document.getElementById('signinName').value.trim();
+        const wa = document.getElementById('signinWhatsapp').value.trim();
+        if(!name||!wa) { alert('Enter name and WhatsApp'); return; }
+        const users = getUsers();
+        const found = users.find(u=> u.name.toLowerCase()===name.toLowerCase() && u.whatsapp===wa);
+        if(!found) { alert('User not found'); return; }
+        if(isUserBanned(found.whatsapp)) { alert('You are banned from the website.'); return; }
+        setCurrentUser(found);
+        renderDashboard(found);
+      });
+
+      function showContributorPanel() {
+        document.getElementById('contributorLoginPanel').classList.remove('hidden');
+      }
+      document.getElementById('topContributorLoginBtn').addEventListener('click', showContributorPanel);
+      document.getElementById('mainContributorLoginBtn').addEventListener('click', showContributorPanel);
+
+      document.getElementById('contribLoginSubmit').addEventListener('click', ()=>{
+        const password = document.getElementById('contribPassword').value;
+        const name = document.getElementById('contribName').value.trim();
+        if(!name) { alert('Enter your name'); return; }
+        
+        if(password === MAIN_PASSWORD) {
+          const mainUser = { name, role:'main', whatsapp:'main-'+Date.now() };
+          setCurrentUser(mainUser);
+          renderDashboard(mainUser);
+        } else if(password === TOP_PASSWORD) {
+          let topList = getTopContributors();
+          if(!topList.includes(name)) {
+            topList.push(name);
+            saveTopContributors(topList);
+          }
+          const topUser = { name, role:'top', whatsapp:'top-'+name };
+          setCurrentUser(topUser);
+          renderDashboard(topUser);
+        } else {
+          alert('Invalid contributor password');
+        }
+      });
+    }
+
+    function renderDashboard(user) {
+      if (!user) {
+        clearCurrentUser();
+        renderSignupSignin();
+        return;
+      }
+
+      const pdfs = getPdfs();
+      const announcements = getAnnouncements();
+      const users = getUsers();
+      const topList = getTopContributors();
+      const banned = getBanned();
+
+      app.innerHTML = `
+        <div class="navbar">
+          <div><strong>📖 PerezStudyroom</strong></div>
+          <div><span class="role-badge">${user.role==='main'?'🛡️ Main':user.role==='top'?'⭐ Top':'👤 User'}</span></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Welcome, ${user.name}</span>
+          <button id="logoutBtn" class="btn-small secondary">Logout</button>
+        </div>
+        <hr>
+        <div id="announcementSection">
+          <h3>📢 Announcements</h3>
+          <div id="announceList"></div>
+        </div>
+        <div style="margin-top:16px;">
+          <h3>📄 PDF Documents</h3>
+          <div id="pdfList"></div>
+        </div>
+        ${user.role==='top' || user.role==='main' ? `
+        <div style="margin-top:20px; background:#f0f4ff; padding:14px; border-radius:16px;">
+          <h4>➕ Add Content</h4>
+          <input type="text" id="newPdfTitle" placeholder="PDF Title" style="margin-bottom:6px;">
+          <input type="text" id="newPdfUrl" placeholder="PDF URL or drive link" style="margin-bottom:6px;">
+          <button id="addPdfBtn">📎 Add PDF</button>
+          <input type="text" id="newAnnouncement" placeholder="Brief notification/announcement" style="margin-top:10px;">
+          <button id="addAnnounceBtn">📢 Post Announcement</button>
+        </div>` : ''}
+        ${user.role==='main' ? `
+        <div style="margin-top:16px; background:#fff5f5; padding:14px; border-radius:16px;">
+          <h4>🛡️ Main Controls</h4>
+          <div class="form-group">
+            <label>Ban user by WhatsApp</label>
+            <input type="text" id="banWhatsapp" placeholder="User WhatsApp number">
+            <button id="banUserBtn" class="danger btn-small">⛔ Ban User</button>
+          </div>
+          <div class="form-group">
+            <label>Ban Top Contributor (name)</label>
+            <input type="text" id="banTopName" placeholder="Top contributor name">
+            <button id="banTopBtn" class="danger btn-small">⛔ Ban Top</button>
+          </div>
+          <div style="margin-top:10px;">
+            <button id="viewAllDataBtn" class="secondary btn-small">📋 View All Data</button>
+          </div>
+          <div id="allDataDisplay" class="hidden small-text" style="background:white; padding:10px; border-radius:12px; margin-top:10px;"></div>
+        </div>` : ''}
+        <p style="text-align:center; margin-top:20px;">
+          <a class="whatsapp-link" href="https://wa.me/2349012105476?text=Request%20PDF%20addition" target="_blank">💬 WhatsApp 09012105476</a>
+        </p>
+      `;
+
+      // Render lists
+      function refreshLists() {
+        const annDiv = document.getElementById('announceList');
+        const pdfDiv = document.getElementById('pdfList');
+        if(annDiv) {
+          annDiv.innerHTML = announcements.length ? announcements.map(a=>`<div class="announcement-card">📌 ${a.text} <span class="small-text">by ${a.by}</span></div>`).join('') : '<p class="small-text">No announcements yet.</p>';
+        }
+        if(pdfDiv) {
+          pdfDiv.innerHTML = pdfs.length ? pdfs.map(p=>`<div class="pdf-item">📄 <strong>${p.title}</strong> <a href="${p.url}" target="_blank" style="color:#2563eb;">Open</a> <span class="small-text">by ${p.by}</span></div>`).join('') : '<p class="small-text">No PDFs shared.</p>';
+        }
+      }
+      refreshLists();
+
+      document.getElementById('logoutBtn').addEventListener('click', ()=>{
+        clearCurrentUser();
+        renderSignupSignin();
+      });
+
+      if (user.role==='top' || user.role==='main') {
+        document.getElementById('addPdfBtn').addEventListener('click', ()=>{
+          const title = document.getElementById('newPdfTitle').value.trim();
+          const url = document.getElementById('newPdfUrl').value.trim();
+          if(!title||!url) return alert('Enter title and URL');
+          const newPdf = { title, url, by: user.name, date: new Date().toLocaleDateString() };
+          pdfs.push(newPdf);
+          savePdfs(pdfs);
+          refreshLists();
+          document.getElementById('newPdfTitle').value = '';
+          document.getElementById('newPdfUrl').value = '';
+        });
+        document.getElementById('addAnnounceBtn').addEventListener('click', ()=>{
+          const text = document.getElementById('newAnnouncement').value.trim();
+          if(!text) return;
+          announcements.push({ text, by: user.name, date: new Date().toLocaleDateString() });
+          saveAnnouncements(announcements);
+          refreshLists();
+          document.getElementById('newAnnouncement').value = '';
+        });
+      }
+
+      if (user.role==='main') {
+        document.getElementById('banUserBtn').addEventListener('click', ()=>{
+          const wa = document.getElementById('banWhatsapp').value.trim();
+          if(!wa) return;
+          const already = banned.find(b=>b.identifier===wa && b.type==='user');
+          if(!already) {
+            banned.push({ identifier: wa, type:'user' });
+            saveBanned(banned);
+            alert(`User ${wa} banned.`);
+            // if current banned user is logged in, force logout later
+          } else alert('Already banned');
+        });
+        document.getElementById('banTopBtn').addEventListener('click', ()=>{
+          const topName = document.getElementById('banTopName').value.trim();
+          if(!topName) return;
+          const already = banned.find(b=>b.identifier===topName && b.type==='top');
+          if(!already) {
+            banned.push({ identifier: topName, type:'top' });
+            saveBanned(banned);
+            alert(`Top contributor ${topName} banned.`);
+          } else alert('Already banned');
+        });
+        document.getElementById('viewAllDataBtn').addEventListener('click', ()=>{
+          const display = document.getElementById('allDataDisplay');
+          display.classList.remove('hidden');
+          display.innerHTML = `<strong>Users (${users.length})</strong><br>` + 
+            users.map(u=
