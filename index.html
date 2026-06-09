@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>PerezStudyRoom | Academic Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>PerezStudyroom • PDF & Announcements</title>
   <style>
     * {
       margin: 0;
@@ -11,518 +11,519 @@
       box-sizing: border-box;
       font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     }
-
     body {
-      background: linear-gradient(145deg, #f5f7fc 0%, #eef2f6 100%);
+      background: #f5f7fb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       min-height: 100vh;
-      padding: 1.5rem;
+      padding: 20px;
     }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    /* header & branding */
-    .header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(6px);
-      padding: 1rem 2rem;
-      border-radius: 48px;
-      margin-bottom: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-
-    .logo-area h1 {
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, #1e2b6e, #2a4b7c);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: -0.3px;
-    }
-
-    .logo-area p {
-      color: #4a627a;
-      font-size: 0.8rem;
-    }
-
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      padding: 0.5rem 1.2rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
-      transition: 0.2s;
-      box-shadow: 0 2px 8px rgba(37,211,102,0.3);
-    }
-
-    .whatsapp-btn:hover {
-      background: #20b859;
-      transform: scale(1.02);
-    }
-
-    /* main columns layout */
-    .dashboard-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-    }
-
-    .sidebar {
-      flex: 1.2;
-      min-width: 260px;
-      background: white;
-      border-radius: 32px;
-      padding: 1.5rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-      height: fit-content;
-    }
-
-    .main-content {
-      flex: 3;
-      min-width: 280px;
-      background: white;
-      border-radius: 32px;
-      padding: 1.8rem;
-      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
-    }
-
-    .section-card {
-      margin-bottom: 2rem;
-      border-bottom: 1px solid #e9edf2;
-      padding-bottom: 1.5rem;
-    }
-
-    .section-card:last-child {
-      border-bottom: none;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #1e2f41;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin: 1rem 0 0.6rem 0;
-      color: #2c3e50;
-    }
-
-    input, textarea, select, button {
+    .app-container {
+      max-width: 500px;
       width: 100%;
-      padding: 12px 14px;
-      margin: 8px 0;
-      border-radius: 24px;
-      border: 1px solid #cfdfed;
-      background: #fefefe;
-      transition: all 0.2s;
-      font-size: 0.95rem;
-    }
-
-    button {
-      background: #1e466e;
-      color: white;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #0f2f4f;
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary {
-      background: #6c757d;
-    }
-    .btn-secondary:hover {
-      background: #4a545c;
-    }
-
-    .btn-outline {
       background: white;
-      border: 1px solid #1e466e;
-      color: #1e466e;
-    }
-
-    .alert {
-      padding: 12px;
-      border-radius: 24px;
-      margin: 12px 0;
-      background: #e7f3ff;
-      color: #004e9e;
-      font-size: 0.85rem;
-    }
-
-    .pdf-list, .announce-list {
-      list-style: none;
-    }
-    .pdf-list li, .announce-list li {
-      background: #f8fafd;
-      margin: 10px 0;
-      padding: 12px 16px;
       border-radius: 28px;
-      border-left: 4px solid #2c7da0;
-      word-break: break-word;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      padding: 24px 20px;
+      transition: all 0.2s ease;
     }
-
-    .badge {
-      background: #e2eafc;
-      padding: 4px 12px;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: bold;
-    }
-
-    hr {
-      margin: 1rem 0;
-    }
-
-    .user-avatar {
-      width: 60px;
-      height: 60px;
+    .profile-pic {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
       object-fit: cover;
-      margin-right: 12px;
-      border: 2px solid white;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto 16px;
+      border: 3px solid #e0e7ff;
+      background: #d9e2f0;
     }
-
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #0b1e33;
+      text-align: center;
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #4b5563;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eef2f6;
+      padding-bottom: 18px;
+    }
+    .form-group {
+      margin-bottom: 14px;
+    }
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1f2937;
+      display: block;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+    input,
+    select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      font-size: 1rem;
+      outline: none;
+      background: #f9fafc;
+      transition: 0.2s;
+    }
+    input:focus,
+    select:focus {
+      border-color: #2563eb;
+      background: white;
+    }
+    button {
+      background: #0f172a;
+      color: white;
+      border: none;
+      font-weight: 600;
+      padding: 14px;
+      width: 100%;
+      border-radius: 16px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+    }
+    button.secondary {
+      background: white;
+      color: #1e293b;
+      border: 1.5px solid #cbd5e1;
+      margin-top: 6px;
+    }
+    button.danger {
+      background: #b91c1c;
+      color: white;
+    }
     .flex-row {
       display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      gap: 10px;
     }
-
-    @media (max-width: 780px) {
-      body { padding: 1rem; }
-      .sidebar, .main-content { flex: 1 1 100%; }
+    .otp-section {
+      background: #f1f5f9;
+      padding: 12px;
+      border-radius: 14px;
+      margin: 12px 0;
+    }
+    .hidden {
+      display: none !important;
+    }
+    .announcement-card,
+    .pdf-item {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #e9eef3;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .role-badge {
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .whatsapp-link {
+      color: #075e54;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    hr {
+      margin: 18px 0;
+      border: 0.5px solid #e2e8f0;
+    }
+    .small-text {
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .btn-small {
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      width: auto;
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <div class="logo-area">
-      <h1>📘 PerezStudyRoom</h1>
-      <p>Share • Learn • Excel</p>
-    </div>
-    <a class="whatsapp-btn" href="https://wa.me/2349012105476" target="_blank">📱 Message 09012105476 on WhatsApp</a>
+  <div class="app-container" id="appContainer">
+    <!-- dynamic content rendered here -->
   </div>
 
-  <div class="dashboard-grid">
-    <!-- SIDEBAR: Auth + Role Specific Actions -->
-    <div class="sidebar" id="sidebarPanel">
-      <div id="profileSummary" style="margin-bottom: 1rem;"></div>
+  <script>
+    (function() {
+      // ---------- STORAGE & STATE ----------
+      const STORAGE_KEYS = {
+        CURRENT_USER: 'perez_current_user',
+        USERS: 'perez_users',
+        TOP_CONTRIBUTORS: 'perez_top_contributors',
+        PDFS: 'perez_pdfs',
+        ANNOUNCEMENTS: 'perez_announcements',
+        BANNED: 'perez_banned'
+      };
 
-      <!-- Normal User Auth Block (signup/signin) -->
-      <div id="normalAuthArea" class="section-card">
-        <h2>👤 Student Zone</h2>
-        <div>
-          <button id="showSignupBtn" class="btn-outline" style="margin-right: 8px;">📝 Sign Up</button>
-          <button id="showSigninBtn" class="btn-outline">🔑 Sign In</button>
-        </div>
-        <div id="authFormContainer" style="margin-top: 12px;"></div>
-        <div id="otpVerifyContainer" style="margin-top: 12px;"></div>
-      </div>
+      const MAIN_PASSWORD = '$set2024$';
+      const TOP_PASSWORD = '22332024';
 
-      <!-- Top Contributor special login -->
-      <div class="section-card">
-        <h2>⭐ Top Contributors Area</h2>
-        <div id="topContribLoginForm">
-          <input type="text" id="topName" placeholder="Any Display Name" autocomplete="off">
-          <input type="password" id="topPassword" placeholder="Top Contributor Password">
-          <button id="loginTopBtn">Enter as Top Contributor</button>
-          <small style="color:gray;">Password: <strong>22332024</strong></small>
-        </div>
-        <div id="topLogoutArea" style="display:none;">
-          <button id="logoutTopBtn" class="btn-secondary">🚪 Exit Top Mode</button>
-        </div>
-      </div>
-
-      <!-- Main Contributor special login -->
-      <div class="section-card">
-        <h2>👑 Main Contributor</h2>
-        <div id="mainContribLoginForm">
-          <input type="text" id="mainName" placeholder="Any Admin Name">
-          <input type="password" id="mainPassword" placeholder="Master password">
-          <button id="loginMainBtn">Access Admin Hub</button>
-          <small>Password: <strong>$set2024$</strong></small>
-        </div>
-        <div id="mainLogoutArea" style="display:none;">
-          <button id="logoutMainBtn" class="btn-secondary">Exit Admin Mode</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- MAIN CONTENT: Documents, Announcements & Admin panels -->
-    <div class="main-content" id="dynamicContent">
-      <div id="globalMessage" class="alert" style="display:none;"></div>
-      <div id="contentRenderer">
-        <!-- Default: show public info / docs & announcements -->
-        <h2>📄 Latest Documents</h2>
-        <div id="pdfListArea">Loading PDFs...</div>
-        <h2>📢 Announcements</h2>
-        <div id="announcementArea">Loading announcements...</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  // ---------- FRONTEND CLIENT ----------
-  const API_BASE = '';
-  let currentUser = null;   // { role, identifier, name, ... }
-
-  // Helper fetch with credentials
-  async function apiFetch(endpoint, options = {}) {
-    const res = await fetch(API_BASE + endpoint, {
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json', ...options.headers },
-      ...options,
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Request failed');
-    return data;
-  }
-
-  async function loadSession() {
-    try {
-      const session = await apiFetch('/api/session');
-      if (session.loggedIn) {
-        currentUser = session.user;
-        updateUIForRole();
-      } else {
-        currentUser = null;
-        updateUIForRole();
+      if (!localStorage.getItem(STORAGE_KEYS.USERS)) {
+        localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify([]));
       }
-      await refreshDocumentsAndAnnouncements();
-      if (currentUser?.role === 'main') await loadAdminData();
-      if (currentUser?.role === 'top') await loadTopUploadPanel();
-    } catch(e) { console.error(e); showMessage(e.message, 'error'); }
-  }
-
-  async function refreshDocumentsAndAnnouncements() {
-    try {
-      const docs = await apiFetch('/api/documents');
-      const announcements = await apiFetch('/api/announcements');
-      const pdfContainer = document.getElementById('pdfListArea');
-      pdfContainer.innerHTML = docs.length ? docs.map(d => `<li><strong>📑 ${d.filename}</strong> <br><small>Uploaded by: ${d.uploadedBy} on ${new Date(d.timestamp).toLocaleString()}</small><br><a href="/uploads/${d.filename}" target="_blank" style="color:#1e6f5c;">🔍 View PDF</a></li>`).join('') : '<li>No PDFs uploaded yet.</li>';
-      const annContainer = document.getElementById('announcementArea');
-      annContainer.innerHTML = announcements.length ? announcements.map(a => `<li><strong>📢 ${a.title}</strong><br>${a.body}<br><small>— ${a.author}  •  ${new Date(a.timestamp).toLocaleString()}</small></li>`).join('') : '<li>No announcements yet.</li>';
-    } catch(e) { console.error(e); }
-  }
-
-  function updateUIForRole() {
-    const normalArea = document.getElementById('normalAuthArea');
-    const topLoginDiv = document.getElementById('topContribLoginForm');
-    const topLogoutDiv = document.getElementById('topLogoutArea');
-    const mainLoginDiv = document.getElementById('mainContribLoginForm');
-    const mainLogoutDiv = document.getElementById('mainLogoutArea');
-    const profileDiv = document.getElementById('profileSummary');
-
-    if (currentUser) {
-      profileDiv.innerHTML = `<div class="flex-row"><img src="/p.jpg" class="user-avatar" onerror="this.src='https://placehold.co/60x60?text=P'"><div><strong>${currentUser.name || currentUser.identifier || 'User'}</strong><br><span class="badge">${currentUser.role === 'user' ? '👩‍🎓 Student' : (currentUser.role === 'top' ? '⭐ Top Contributor' : '👑 Main Contributor')}</span></div></div>`;
-      if (currentUser.role === 'user') normalArea.style.display = 'block';
-      else normalArea.style.display = 'none';
-
-      if (currentUser.role === 'top') {
-        topLoginDiv.style.display = 'none';
-        topLogoutDiv.style.display = 'block';
-        mainLoginDiv.style.display = 'block';
-        mainLogoutDiv.style.display = 'none';
-      } else if (currentUser.role === 'main') {
-        topLoginDiv.style.display = 'block';
-        topLogoutDiv.style.display = 'none';
-        mainLoginDiv.style.display = 'none';
-        mainLogoutDiv.style.display = 'block';
-      } else {
-        topLoginDiv.style.display = 'block';
-        topLogoutDiv.style.display = 'none';
-        mainLoginDiv.style.display = 'block';
-        mainLogoutDiv.style.display = 'none';
+      if (!localStorage.getItem(STORAGE_KEYS.TOP_CONTRIBUTORS)) {
+        localStorage.setItem(STORAGE_KEYS.TOP_CONTRIBUTORS, JSON.stringify([]));
       }
-      document.getElementById('authFormContainer').innerHTML = '';
-      document.getElementById('otpVerifyContainer').innerHTML = '';
-    } else {
-      profileDiv.innerHTML = `<div class="flex-row"><img src="/p.jpg" class="user-avatar" onerror="this.src='https://placehold.co/60x60?text=P'"><div><strong>Guest</strong><br>Login to access full features</div></div>`;
-      normalArea.style.display = 'block';
-      topLoginDiv.style.display = 'block';
-      topLogoutDiv.style.display = 'none';
-      mainLoginDiv.style.display = 'block';
-      mainLogoutDiv.style.display = 'none';
-    }
-    renderAuthForms(); // refresh forms content
-  }
+      if (!localStorage.getItem(STORAGE_KEYS.PDFS)) {
+        localStorage.setItem(STORAGE_KEYS.PDFS, JSON.stringify([]));
+      }
+      if (!localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS)) {
+        localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENTS, JSON.stringify([]));
+      }
+      if (!localStorage.getItem(STORAGE_KEYS.BANNED)) {
+        localStorage.setItem(STORAGE_KEYS.BANNED, JSON.stringify([]));
+      }
 
-  function renderAuthForms() {
-    const container = document.getElementById('authFormContainer');
-    const otpContainer = document.getElementById('otpVerifyContainer');
-    if (!container) return;
-    const activeForm = window._activeAuthForm || 'signup';
-    if (activeForm === 'signup') {
-      container.innerHTML = `<h3>📝 Student Signup</h3>
-        <input type="text" id="signupName" placeholder="Full Name" autocomplete="off">
-        <input type="text" id="signupDept" placeholder="Department">
-        <input type="text" id="signupLevel" placeholder="Level (e.g., 200L)">
-        <input type="tel" id="signupWhatsapp" placeholder="WhatsApp Number (e.g., 234xxxxxxxxx)">
-        <button id="doSignupBtn">Request Signup (OTP will be set by admin)</button>
-        <small>After request, main contributor sets OTP → then verify below</small>`;
-      document.getElementById('doSignupBtn')?.addEventListener('click', requestSignup);
-    } else {
-      container.innerHTML = `<h3>🔐 Student Sign In</h3>
-        <input type="tel" id="signinWhatsapp" placeholder="WhatsApp Number">
-        <button id="doSigninBtn">Sign In</button>`;
-      document.getElementById('doSigninBtn')?.addEventListener('click', signinNormalUser);
-    }
-    otpContainer.innerHTML = `<h3>✅ OTP Verification (if requested)</h3>
-      <input type="text" id="otpCode" placeholder="6-digit OTP from main contributor">
-      <input type="tel" id="otpWhatsapp" placeholder="Your WhatsApp Number">
-      <button id="verifyOtpBtn">Verify & Complete Signup</button>`;
-    document.getElementById('verifyOtpBtn')?.addEventListener('click', verifyOtpComplete);
-  }
+      function getUsers() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.USERS)) || []; }
 
-  async function requestSignup() {
-    const name = document.getElementById('signupName').value.trim();
-    const dept = document.getElementById('signupDept').value.trim();
-    const level = document.getElementById('signupLevel').value.trim();
-    const whatsapp = document.getElementById('signupWhatsapp').value.trim();
-    if (!name || !dept || !level || !whatsapp) return showMessage('All fields required', 'error');
-    try {
-      await apiFetch('/api/signup-request', { method: 'POST', body: JSON.stringify({ name, department: dept, level, whatsapp }) });
-      showMessage('Signup request sent! Main contributor will assign OTP. Then verify above.', 'success');
-    } catch(e) { showMessage(e.message, 'error'); }
-  }
+      function saveUsers(users) { localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(users)); }
 
-  async function verifyOtpComplete() {
-    const otp = document.getElementById('otpCode').value.trim();
-    const whatsapp = document.getElementById('otpWhatsapp').value.trim();
-    if (!otp || !whatsapp) return showMessage('Enter OTP and your WhatsApp number', 'error');
-    try {
-      const res = await apiFetch('/api/verify-otp', { method: 'POST', body: JSON.stringify({ whatsapp, otp }) });
-      showMessage('✅ Account verified! You are now logged in.', 'success');
-      await loadSession();
-    } catch(e) { showMessage(e.message, 'error'); }
-  }
+      function getTopContributors() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.TOP_CONTRIBUTORS)) || []; }
 
-  async function signinNormalUser() {
-    const whatsapp = document.getElementById('signinWhatsapp').value.trim();
-    if (!whatsapp) return showMessage('WhatsApp number required', 'error');
-    try {
-      const res = await apiFetch('/api/normal-signin', { method: 'POST', body: JSON.stringify({ whatsapp }) });
-      showMessage(`Welcome back ${res.user.name}`, 'success');
-      await loadSession();
-    } catch(e) { showMessage(e.message, 'error'); }
-  }
+      function saveTopContributors(list) { localStorage.setItem(STORAGE_KEYS.TOP_CONTRIBUTORS, JSON.stringify(list)); }
 
-  // Top and main login handlers
-  document.getElementById('loginTopBtn')?.addEventListener('click', async () => {
-    const name = document.getElementById('topName').value.trim() || 'TopFan';
-    const pwd = document.getElementById('topPassword').value;
-    if (pwd !== '22332024') return showMessage('Invalid top contributor password', 'error');
-    try {
-      await apiFetch('/api/role-login', { method: 'POST', body: JSON.stringify({ role: 'top', name, password: pwd }) });
-      showMessage(`Logged as Top Contributor: ${name}`, 'success');
-      await loadSession();
-    } catch(e) { showMessage(e.message, 'error'); }
-  });
-  document.getElementById('loginMainBtn')?.addEventListener('click', async () => {
-    const name = document.getElementById('mainName').value.trim() || 'Admin';
-    const pwd = document.getElementById('mainPassword').value;
-    if (pwd !== '$set2024$') return showMessage('Invalid main contributor password', 'error');
-    try {
-      await apiFetch('/api/role-login', { method: 'POST', body: JSON.stringify({ role: 'main', name, password: pwd }) });
-      showMessage(`Admin access granted: ${name}`, 'success');
-      await loadSession();
-    } catch(e) { showMessage(e.message, 'error'); }
-  });
-  document.getElementById('logoutTopBtn')?.addEventListener('click', async () => { await apiFetch('/api/logout', { method: 'POST' }); await loadSession(); });
-  document.getElementById('logoutMainBtn')?.addEventListener('click', async () => { await apiFetch('/api/logout', { method: 'POST' }); await loadSession(); });
-  document.getElementById('showSignupBtn')?.addEventListener('click', () => { window._activeAuthForm = 'signup'; renderAuthForms(); });
-  document.getElementById('showSigninBtn')?.addEventListener('click', () => { window._activeAuthForm = 'signin'; renderAuthForms(); });
+      function getPdfs() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.PDFS)) || []; }
 
-  async function loadTopUploadPanel() {
-    if (currentUser?.role !== 'top') return;
-    const mainDiv = document.getElementById('contentRenderer');
-    const extraHtml = `<div class="section-card" id="topUploadPanel"><h3>📤 Top Contributor: Upload PDF</h3><form id="topUploadForm" enctype="multipart/form-data"><input type="file" name="pdfFile" accept=".pdf" required><button type="submit">Upload PDF</button></form><h3>📢 Post Brief Notification</h3><input type="text" id="notifTitle" placeholder="Title"><textarea id="notifBody" placeholder="Notification content (visible to all users)"></textarea><button id="postNotifBtn">Post Announcement</button></div>`;
-      if (!document.getElementById('topUploadPanel')) mainDiv.insertAdjacentHTML('afterbegin', extraHtml);
-      document.getElementById('topUploadForm')?.addEventListener('submit', async (e) => {
-        e.preventDefault(); const formData = new FormData(e.target);
-        await apiFetch('/api/upload-pdf', { method: 'POST', body: formData });
-        showMessage('PDF uploaded!', 'success'); await refreshDocumentsAndAnnouncements(); e.target.reset();
-      });
-      document.getElementById('postNotifBtn')?.addEventListener('click', async () => {
-        const title = document.getElementById('notifTitle').value, body = document.getElementById('notifBody').value;
-        if (!title || !body) return showMessage('Title and body required');
-        await apiFetch('/api/announcements', { method: 'POST', body: JSON.stringify({ title, body }) });
-        showMessage('Announcement posted'); await refreshDocumentsAndAnnouncements();
-        document.getElementById('notifTitle').value = ''; document.getElementById('notifBody').value = '';
-      });
-  }
+      function savePdfs(pdfs) { localStorage.setItem(STORAGE_KEYS.PDFS, JSON.stringify(pdfs)); }
 
-  async function loadAdminData() {
-    if (currentUser?.role !== 'main') return;
-    const mainDiv = document.getElementById('contentRenderer');
-    const adminHtml = `<div id="adminConsole" class="section-card"><h2>🔧 Main Contributor Console</h2>
-      <div id="pendingRequestsPanel"><h3>⏳ Pending Signup Requests</h3><div id="pendingList"></div></div>
-      <div><h3>👥 All Normal Users</h3><div id="allUsersList"></div><h3>⭐ Top Contributors (by name)</h3><div id="topUsersList"></div></div>
-      <div><h3>🚫 Ban Controls</h3><input type="text" id="banWhatsapp" placeholder="Normal user WhatsApp to ban/unban"><button id="banUserBtn">Ban/Unban User</button><hr><input type="text" id="banTopName" placeholder="Top Contributor Name to Ban"><button id="banTopBtn">Ban/Unban Top Contributor</button></div>
-      <div><h3>📄 Admin Upload PDF</h3><form id="adminUploadForm" enctype="multipart/form-data"><input type="file" name="pdfFile" accept=".pdf"><button type="submit">Upload PDF as Admin</button></form></div>
-      <div><h3>📣 Admin Announcement</h3><input type="text" id="adminAnnTitle" placeholder="Title"><textarea id="adminAnnBody" placeholder="Body"></textarea><button id="adminPostAnnBtn">Post Global Announcement</button></div>
-    </div>`;
-    if (!document.getElementById('adminConsole')) mainDiv.insertAdjacentHTML('afterbegin', adminHtml);
-    await refreshAdminPanels();
-    document.getElementById('adminUploadForm')?.addEventListener('submit', async (e) => { e.preventDefault(); const fd = new FormData(e.target); await apiFetch('/api/upload-pdf', { method: 'POST', body: fd }); showMessage('Admin PDF uploaded'); await refreshDocumentsAndAnnouncements(); e.target.reset(); });
-    document.getElementById('adminPostAnnBtn')?.addEventListener('click', async () => { const title = document.getElementById('adminAnnTitle').value, body = document.getElementById('adminAnnBody').value; if(title && body) { await apiFetch('/api/announcements', { method: 'POST', body: JSON.stringify({ title, body }) }); showMessage('Announcement added'); await refreshDocumentsAndAnnouncements(); document.getElementById('adminAnnTitle').value=''; document.getElementById('adminAnnBody').value='';} });
-    document.getElementById('banUserBtn')?.addEventListener('click', async () => { const whatsapp = document.getElementById('banWhatsapp').value; if(whatsapp) { await apiFetch('/api/admin/ban-user', { method: 'POST', body: JSON.stringify({ whatsapp }) }); showMessage('Toggled ban status'); await refreshAdminPanels(); } });
-    document.getElementById('banTopBtn')?.addEventListener('click', async () => { const name = document.getElementById('banTopName').value; if(name) { await apiFetch('/api/admin/ban-top', { method: 'POST', body: JSON.stringify({ name }) }); showMessage('Top contributor ban toggled'); await refreshAdminPanels(); } });
-  }
+      function getAnnouncements() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.ANNOUNCEMENTS)) || []; }
 
-  async function refreshAdminPanels() {
-    try {
-      const pending = await apiFetch('/api/admin/pending-requests');
-      const users = await apiFetch('/api/admin/all-users');
-      const topList = await apiFetch('/api/admin/all-top-names');
-      const pendingDiv = document.getElementById('pendingList');
-      if(pendingDiv) pendingDiv.innerHTML = pending.map(req => `<div style="background:#f0f4fa; margin:8px; padding:10px; border-radius:24px;"><strong>${req.name}</strong> | ${req.department} | Level ${req.level} | 📞 ${req.whatsapp}<br><input type="text" id="otp_${req.id}" placeholder="Set 6-digit OTP"><button onclick="setOtpForRequest('${req.id}')">Assign OTP</button></div>`).join('');
-      const usersDiv = document.getElementById('allUsersList');
-      if(usersDiv) usersDiv.innerHTML = users.map(u => `<li>📌 ${u.name} | ${u.whatsapp} | Dept: ${u.department} | ${u.banned ? '🚫 Banned' : '✅ Active'} </li>`).join('');
-      const topDiv = document.getElementById('topUsersList');
-      if(topDiv) topDiv.innerHTML = topList.map(t => `<li>⭐ ${t.name} ${t.banned ? '[BANNED]' : '[Active]'}</li>`).join('');
-    } catch(e) {console.error(e);}
-  }
-  window.setOtpForRequest = async (requestId) => {
-    const otpValue = document.getElementById(`otp_${requestId}`).value;
-    if (!otpValue || otpValue.length !== 6) return showMessage('OTP must be 6 digits', 'error');
-    try {
-      await apiFetch(`/api/admin/set-otp/${requestId}`, { method: 'POST', body: JSON.stringify({ otp: otpValue }) });
-      showMessage(`OTP ${otpValue} set for pending user. They can now verify.`, 'success');
-      await refreshAdminPanels();
-    } catch(e) { showMessage(e.message, 'error'); }
-  };
+      function saveAnnouncements(arr) { localStorage.setItem(STORAGE_KEYS.ANNOUNCEMENTS, JSON.stringify(arr)); }
 
-  function showMessage(msg, type='info') { const el = document.getElementById('globalMessage'); if(el) { el.innerText = msg; el.style.display = 'block'; setTimeout(() => { el.style.display = 'none'; }, 5000); } }
+      function getBanned() { return JSON.parse(localStorage.getItem(STORAGE_KEYS.BANNED)) || []; }
 
-  loadSession();
-  setInterval(() => { if(currentUser) refreshDocumentsAndAnnouncements(); }, 30000);
-</script>
+      function saveBanned(banned) { localStorage.setItem(STORAGE_KEYS.BANNED, JSON.stringify(banned)); }
+
+      function getCurrentUser() {
+        const data = localStorage.getItem(STORAGE_KEYS.CURRENT_USER);
+        return data ? JSON.parse(data) : null;
+      }
+
+      function setCurrentUser(user) {
+        localStorage.setItem(STORAGE_KEYS.CURRENT_USER, JSON.stringify(user));
+      }
+
+      function clearCurrentUser() {
+        localStorage.removeItem(STORAGE_KEYS.CURRENT_USER);
+      }
+
+      function isUserBanned(identifier) {
+        const banned = getBanned();
+        return banned.some(b => b.identifier === identifier);
+      }
+
+      const app = document.getElementById('appContainer');
+
+      function renderSignupSignin() {
+        const current = getCurrentUser();
+        if (current) {
+          renderDashboard(current);
+          return;
+        }
+
+        app.innerHTML = `
+        <img src="p.jpg" alt="Profile" class="profile-pic" onerror="this.style.background='#cbd5e1'; this.style.border='2px solid #94a3b8';">
+        <h1>PerezStudyroom</h1>
+        <div class="subtitle">📚 School PDFs & Announcements</div>
+        
+        <div id="authMode">
+          <div class="flex-row">
+            <button id="showSignupBtn" class="secondary" style="flex:1">📝 Sign Up</button>
+            <button id="showSigninBtn" style="flex:1; background:#2563eb;">🔐 Sign In</button>
+          </div>
+          <div id="signupForm" class="hidden" style="margin-top:16px;">
+            <div class="form-group"><input type="text" id="signupName" placeholder="Full Name" required></div>
+            <div class="form-group"><input type="text" id="signupDept" placeholder="Department" required></div>
+            <div class="form-group"><input type="text" id="signupLevel" placeholder="Level (e.g., 200L)" required></div>
+            <div class="form-group"><input type="text" id="signupWhatsapp" placeholder="WhatsApp number e.g 090..." required></div>
+            <div class="otp-section hidden" id="otpBlock">
+              <label>Enter OTP sent to WhatsApp</label>
+              <input type="text" id="otpInput" placeholder="OTP code">
+              <button id="verifyOtpBtn" class="secondary" style="margin-top:8px;">✅ Verify OTP</button>
+            </div>
+            <button id="requestOtpBtn">📲 Send OTP to WhatsApp</button>
+            <p class="small-text" style="margin-top:6px;">⚠️ Demo: OTP is <strong>1234</strong> (real SMS/WhatsApp API requires backend)</p>
+          </div>
+          <div id="signinForm" class="hidden" style="margin-top:16px;">
+            <div class="form-group"><input type="text" id="signinName" placeholder="Registered Name"></div>
+            <div class="form-group"><input type="text" id="signinWhatsapp" placeholder="WhatsApp number"></div>
+            <button id="signinSubmitBtn">🔓 Sign In</button>
+          </div>
+        </div>
+        <hr>
+        <div style="margin-top:10px;">
+          <button id="topContributorLoginBtn" class="secondary">⭐ Top Contributors Login</button>
+          <button id="mainContributorLoginBtn" class="secondary" style="margin-top:8px;">🛡️ Main Contributor</button>
+        </div>
+        <div id="contributorLoginPanel" class="hidden" style="margin-top:12px; background:#f1f5f9; padding:14px; border-radius:16px;">
+          <div class="form-group"><input type="text" id="contribName" placeholder="Your Name (any)"></div>
+          <div class="form-group"><input type="password" id="contribPassword" placeholder="Password"></div>
+          <button id="contribLoginSubmit">🔑 Enter</button>
+        </div>
+        <p style="text-align:center; margin-top:16px;">
+          <a class="whatsapp-link" href="https://wa.me/2349012105476?text=Hello%20I%20have%20PDF%2Fannouncement%20for%20PerezStudyroom" target="_blank">
+            💬 Message 09012105476 on WhatsApp
+          </a>
+        </p>
+      `;
+
+        document.getElementById('showSignupBtn').addEventListener('click', () => {
+          document.getElementById('signupForm').classList.remove('hidden');
+          document.getElementById('signinForm').classList.add('hidden');
+        });
+        document.getElementById('showSigninBtn').addEventListener('click', () => {
+          document.getElementById('signinForm').classList.remove('hidden');
+          document.getElementById('signupForm').classList.add('hidden');
+        });
+
+        document.getElementById('requestOtpBtn').addEventListener('click', () => {
+          const wa = document.getElementById('signupWhatsapp').value.trim();
+          if (!wa) { alert('Enter WhatsApp number'); return; }
+          document.getElementById('otpBlock').classList.remove('hidden');
+          alert('OTP sent to WhatsApp (Demo: 1234)');
+        });
+
+        document.getElementById('verifyOtpBtn').addEventListener('click', () => {
+          const otp = document.getElementById('otpInput').value.trim();
+          if (otp !== '1234') { alert('Invalid OTP'); return; }
+          const name = document.getElementById('signupName').value.trim();
+          const dept = document.getElementById('signupDept').value.trim();
+          const level = document.getElementById('signupLevel').value.trim();
+          const whatsapp = document.getElementById('signupWhatsapp').value.trim();
+          if (!name || !dept || !level || !whatsapp) { alert('Fill all fields'); return; }
+          const users = getUsers();
+          if (users.find(u => u.whatsapp === whatsapp)) { alert('WhatsApp already registered'); return; }
+          const newUser = { name, department: dept, level, whatsapp, role: 'user' };
+          users.push(newUser);
+          saveUsers(users);
+          setCurrentUser(newUser);
+          renderDashboard(newUser);
+        });
+
+        document.getElementById('signinSubmitBtn').addEventListener('click', () => {
+          const name = document.getElementById('signinName').value.trim();
+          const wa = document.getElementById('signinWhatsapp').value.trim();
+          if (!name || !wa) { alert('Enter name and WhatsApp'); return; }
+          const users = getUsers();
+          const found = users.find(u => u.name.toLowerCase() === name.toLowerCase() && u.whatsapp === wa);
+          if (!found) { alert('User not found'); return; }
+          if (isUserBanned(found.whatsapp)) { alert('You are banned from the website.'); return; }
+          setCurrentUser(found);
+          renderDashboard(found);
+        });
+
+        function showContributorPanel() {
+          document.getElementById('contributorLoginPanel').classList.remove('hidden');
+        }
+        document.getElementById('topContributorLoginBtn').addEventListener('click', showContributorPanel);
+        document.getElementById('mainContributorLoginBtn').addEventListener('click', showContributorPanel);
+
+        document.getElementById('contribLoginSubmit').addEventListener('click', () => {
+          const password = document.getElementById('contribPassword').value;
+          const name = document.getElementById('contribName').value.trim();
+          if (!name) { alert('Enter your name'); return; }
+
+          if (password === MAIN_PASSWORD) {
+            const mainUser = { name, role: 'main', whatsapp: 'main-' + Date.now() };
+            setCurrentUser(mainUser);
+            renderDashboard(mainUser);
+          } else if (password === TOP_PASSWORD) {
+            let topList = getTopContributors();
+            if (!topList.includes(name)) {
+              topList.push(name);
+              saveTopContributors(topList);
+            }
+            const topUser = { name, role: 'top', whatsapp: 'top-' + name };
+            setCurrentUser(topUser);
+            renderDashboard(topUser);
+          } else {
+            alert('Invalid contributor password');
+          }
+        });
+      }
+
+      function renderDashboard(user) {
+        if (!user) {
+          clearCurrentUser();
+          renderSignupSignin();
+          return;
+        }
+
+        const pdfs = getPdfs();
+        const announcements = getAnnouncements();
+        const users = getUsers();
+        const topList = getTopContributors();
+        const banned = getBanned();
+
+        app.innerHTML = `
+        <div class="navbar">
+          <div><strong>📖 PerezStudyroom</strong></div>
+          <div><span class="role-badge">${user.role==='main'?'🛡️ Main':user.role==='top'?'⭐ Top':'👤 User'}</span></div>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span>Welcome, ${user.name}</span>
+          <button id="logoutBtn" class="btn-small secondary">Logout</button>
+        </div>
+        <hr>
+        <div id="announcementSection">
+          <h3>📢 Announcements</h3>
+          <div id="announceList"></div>
+        </div>
+        <div style="margin-top:16px;">
+          <h3>📄 PDF Documents</h3>
+          <div id="pdfList"></div>
+        </div>
+        ${user.role==='top' || user.role==='main' ? `
+        <div style="margin-top:20px; background:#f0f4ff; padding:14px; border-radius:16px;">
+          <h4>➕ Add Content</h4>
+          <input type="text" id="newPdfTitle" placeholder="PDF Title" style="margin-bottom:6px;">
+          <input type="text" id="newPdfUrl" placeholder="PDF URL or drive link" style="margin-bottom:6px;">
+          <button id="addPdfBtn">📎 Add PDF</button>
+          <input type="text" id="newAnnouncement" placeholder="Brief notification/announcement" style="margin-top:10px;">
+          <button id="addAnnounceBtn">📢 Post Announcement</button>
+        </div>` : ''}
+        ${user.role==='main' ? `
+        <div style="margin-top:16px; background:#fff5f5; padding:14px; border-radius:16px;">
+          <h4>🛡️ Main Controls</h4>
+          <div class="form-group">
+            <label>Ban user by WhatsApp</label>
+            <input type="text" id="banWhatsapp" placeholder="User WhatsApp number">
+            <button id="banUserBtn" class="danger btn-small">⛔ Ban User</button>
+          </div>
+          <div class="form-group">
+            <label>Ban Top Contributor (name)</label>
+            <input type="text" id="banTopName" placeholder="Top contributor name">
+            <button id="banTopBtn" class="danger btn-small">⛔ Ban Top</button>
+          </div>
+          <div style="margin-top:10px;">
+            <button id="viewAllDataBtn" class="secondary btn-small">📋 View All Data</button>
+          </div>
+          <div id="allDataDisplay" class="hidden small-text" style="background:white; padding:10px; border-radius:12px; margin-top:10px;"></div>
+        </div>` : ''}
+        <p style="text-align:center; margin-top:20px;">
+          <a class="whatsapp-link" href="https://wa.me/2349012105476?text=Request%20PDF%20addition" target="_blank">💬 WhatsApp 09012105476</a>
+        </p>
+      `;
+
+        function refreshLists() {
+          const annDiv = document.getElementById('announceList');
+          const pdfDiv = document.getElementById('pdfList');
+          if (annDiv) {
+            annDiv.innerHTML = announcements.length ? announcements.map(a => `<div class="announcement-card">📌 ${a.text} <span class="small-text">by ${a.by}</span></div>`).join('') : '<p class="small-text">No announcements yet.</p>';
+          }
+          if (pdfDiv) {
+            pdfDiv.innerHTML = pdfs.length ? pdfs.map(p => `<div class="pdf-item">📄 <strong>${p.title}</strong> <a href="${p.url}" target="_blank" style="color:#2563eb;">Open</a> <span class="small-text">by ${p.by}</span></div>`).join('') : '<p class="small-text">No PDFs shared.</p>';
+          }
+        }
+        refreshLists();
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+          clearCurrentUser();
+          renderSignupSignin();
+        });
+
+        if (user.role === 'top' || user.role === 'main') {
+          document.getElementById('addPdfBtn').addEventListener('click', () => {
+            const title = document.getElementById('newPdfTitle').value.trim();
+            const url = document.getElementById('newPdfUrl').value.trim();
+            if (!title || !url) return alert('Enter title and URL');
+            const newPdf = { title, url, by: user.name, date: new Date().toLocaleDateString() };
+            pdfs.push(newPdf);
+            savePdfs(pdfs);
+            refreshLists();
+            document.getElementById('newPdfTitle').value = '';
+            document.getElementById('newPdfUrl').value = '';
+          });
+          document.getElementById('addAnnounceBtn').addEventListener('click', () => {
+            const text = document.getElementById('newAnnouncement').value.trim();
+            if (!text) return;
+            announcements.push({ text, by: user.name, date: new Date().toLocaleDateString() });
+            saveAnnouncements(announcements);
+            refreshLists();
+            document.getElementById('newAnnouncement').value = '';
+          });
+        }
+
+        if (user.role === 'main') {
+          document.getElementById('banUserBtn').addEventListener('click', () => {
+            const wa = document.getElementById('banWhatsapp').value.trim();
+            if (!wa) return;
+            const already = banned.find(b => b.identifier === wa && b.type === 'user');
+            if (!already) {
+              banned.push({ identifier: wa, type: 'user' });
+              saveBanned(banned);
+              alert(`User ${wa} banned.`);
+            } else alert('Already banned');
+          });
+          document.getElementById('banTopBtn').addEventListener('click', () => {
+            const topName = document.getElementById('banTopName').value.trim();
+            if (!topName) return;
+            const already = banned.find(b => b.identifier === topName && b.type === 'top');
+            if (!already) {
+              banned.push({ identifier: topName, type: 'top' });
+              saveBanned(banned);
+              alert(`Top contributor ${topName} banned.`);
+            } else alert('Already banned');
+          });
+          document.getElementById('viewAllDataBtn').addEventListener('click', () => {
+            const display = document.getElementById('allDataDisplay');
+            display.classList.remove('hidden');
+            display.innerHTML = `<strong>Users (${users.length})</strong><br>` +
+              users.map(u => `${u.name} - ${u.department} ${u.level} WA:${u.whatsapp}`).join('<br>') +
+              `<br><strong>Top Contributors:</strong> ${topList.join(', ') || 'none'}<br>` +
+              `<strong>Banned:</strong> ${banned.map(b => b.identifier + '(' + b.type + ')').join(', ') || 'none'}`;
+          });
+        }
+      }
+
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        if (currentUser.role === 'user' && isUserBanned(currentUser.whatsapp)) {
+          clearCurrentUser();
+          renderSignupSignin();
+          alert('Your account has been banned.');
+        } else if (currentUser.role === 'top' && isUserBanned(currentUser.name)) {
+          clearCurrentUser();
+          renderSignupSignin();
+          alert('Top contributor access revoked.');
+        } else {
+          renderDashboard(currentUser);
+        }
+      } else {
+        renderSignupSignin();
+      }
+    })();
+  </script>
 </body>
 </html>
-
-<!-- Backend server code (Node.js + Express) - copy to server.js and run -->
